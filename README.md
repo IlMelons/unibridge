@@ -14,5 +14,4 @@ The unibridge project was born with the aim of unifying the thousands of process
 - If you are the Owner of a server you can share the project to the creators and propose to contribute to the project or star the project to support it
 
 ## Contacts & Support
-[Discord](https://discord.gg/RxpNTx2YKZ)
-[Ko-Fi IlMelons](https://ko-fi.com/ilmelons)
+- IlMelons | [Discord](https://discord.gg/RxpNTx2YKZ) - [Ko-Fi IlMelons](https://ko-fi.com/ilmelons)
