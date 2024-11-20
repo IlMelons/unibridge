@@ -7,22 +7,22 @@ ResourceFinder = {}
 ---@description Supported Framework List
 Frameworks = {
     {name = "esx", resource = "es_extended"},
+    {name = "qbx", resource = "qbx_core"},
     {name = "qb", resource = "qb-core"},
     {name = "nd", resource = "ND_Core"},
-    {name = "qbx", resource = "qbx_core"},
     {name = "ox", resource = "ox_core"},
 }
 
 ---@description Supported Target List
 Targets = {
-    {name = "qb", resource = "qb-target"},
     {name = "ox", resource = "ox_target"},
+    {name = "qb", resource = "qb-target"},
 }
 
 ---@description Supported Inventory List
 Inventories = {
-    {name = "qb", resource = "qb-inventory"},
     {name = "ox", resource = "ox_inventory"},
+    {name = "qb", resource = "qb-inventory"},
 }
 
 ---@description Auto-Detect Framework Function
