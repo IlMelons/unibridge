@@ -16,11 +16,8 @@ end
 
 ResourceFinder = {}
 
-ResourceFinder.Framework = DetectResource("Framework")
-ResourceFinder.Target = DetectResource("Target")
-ResourceFinder.Inventory = DetectResource("Inventory")
-
----@description Debug Functions - Do Not Remove
-lib.print.debug("Framework Set/Found: "..ResourceFinder.Framework)
-lib.print.debug("Target Set/Found: "..ResourceFinder.Target)
-lib.print.debug("Inventory Set/Found: "..ResourceFinder.Inventory)
+for category, _ in pairs(Supported) do
+    local detectedResource = DetectResource(category)
+    ResourceFinder[category] = detectedResource
+    lib.print.debug(category.." Set/Found: "..(detectedResource or "Not Found"))
+end
