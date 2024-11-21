@@ -1,6 +1,6 @@
 return {
     ---@description Supported Frameworks
-    Frameworks = {
+    Framework = {
         {name = "esx", resource = "es_extended"},
         {name = "qbx", resource = "qbx_core"},
         {name = "qb", resource = "qb-core"},
@@ -8,12 +8,12 @@ return {
         {name = "ox", resource = "ox_core"},
     },
     ---@description Supported Targets
-    Targets = {
+    Target = {
         {name = "ox", resource = "ox_target"},
         {name = "qb", resource = "qb-target"},
     },
     ---@description Supported Inventories
-    Inventories = {
+    Inventory = {
         {name = "ox", resource = "ox_inventory"},
         {name = "qb", resource = "qb-inventory"},
     },

@@ -3,11 +3,11 @@ if GetResourceState("ox_lib") ~= "started" then return print("[ERROR]: ox_lib no
 Config = lib.load("config")
 Supported = lib.load("supported")
 
-function DetectResource(configKey, resourceList)
-    local resources = Supported[resourceList]
+function DetectResource(category)
+    local resources = Supported[category]
     for i = 1, #resources do
         local resourceName, resourceFolder = resources[i].name, resources[i].resource
-        if (Config[configKey] == "auto" and GetResourceState(resourceFolder) == "started") or Config[configKey] == resourceName then
+        if (Config[category] == "auto" and GetResourceState(resourceFolder) == "started") or Config[category] == resourceName then
             return resourceName
         end
     end
@@ -16,9 +16,9 @@ end
 
 ResourceFinder = {}
 
-ResourceFinder.Framework = DetectResource("Framework", Frameworks)
-ResourceFinder.Target = DetectResource("Target", Targets)
-ResourceFinder.Inventory = DetectResource("Inventory", Inventories)
+ResourceFinder.Framework = DetectResource("Framework")
+ResourceFinder.Target = DetectResource("Target")
+ResourceFinder.Inventory = DetectResource("Inventory")
 
 ---@description Debug Functions - Do Not Remove
 lib.print.debug("Framework Set/Found: "..ResourceFinder.Framework)
