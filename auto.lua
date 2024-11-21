@@ -2,9 +2,7 @@ if GetResourceState("ox_lib") ~= "started" then return print("[ERROR]: ox_lib no
 
 Config = lib.load("config")
 
-ResourceFinder = {}
-
----@description Supported Framework List
+---@description Supported Resources List
 Frameworks = {
     {name = "esx", resource = "es_extended"},
     {name = "qbx", resource = "qbx_core"},
@@ -12,48 +10,30 @@ Frameworks = {
     {name = "nd", resource = "ND_Core"},
     {name = "ox", resource = "ox_core"},
 }
-
----@description Supported Target List
 Targets = {
     {name = "ox", resource = "ox_target"},
     {name = "qb", resource = "qb-target"},
 }
-
----@description Supported Inventory List
 Inventories = {
     {name = "ox", resource = "ox_inventory"},
     {name = "qb", resource = "qb-inventory"},
 }
 
----@description Auto-Detect Framework Function
-for i = 1, #Frameworks do
-    local frameworkName, frameworkFolder = Frameworks[i].name, Frameworks[i].resource
-    
-    if (Config.Framework == "auto" and GetResourceState(frameworkFolder) == "started") or Config.Framework == frameworkName then
-        ResourceFinder.Framework = frameworkName
-        break
+function DetectResource(configKey, resourceList)
+    for i = 1, #resourceList do
+        local resourceName, resourceFolder = resourceList[i].name, resourceList[i].resource
+        if (Config[configKey] == "auto" and GetResourceState(resourceFolder) == "started") or Config[configKey] == resourceName then
+            return resourceName
+        end
     end
+    return nil
 end
 
----@description Auto-Detect Target Function
-for i = 1, #Targets do
-    local targetName, targetFolder = Targets[i].name, Targets[i].resource
-    
-    if (Config.Target == "auto" and GetResourceState(targetFolder) == "started") or Config.Target == (target or targetLabel) then
-        ResourceFinder.Target = targetName
-        break
-    end
-end
+ResourceFinder = {}
 
----@description Auto-Detect Inventory Function
-for i = 1, #Inventories do
-    local inventoryName, inventoryFolder = Inventories[i].name, Inventories[i].resource
-    
-    if (Config.Inventory == "auto" and GetResourceState(inventoryFolder) == "started") or Config.Inventory == inventoryName then
-        ResourceFinder.Inventory = inventoryName
-        break
-    end
-end
+ResourceFinder.Framework = DetectResource("Framework", Frameworks)
+ResourceFinder.Target = DetectResource("Target", Targets)
+ResourceFinder.Inventory = DetectResource("Inventory", Inventories)
 
 ---@description Debug Functions - Do Not Remove
 lib.print.debug("Framework Set/Found: "..ResourceFinder.Framework)
