@@ -9,10 +9,10 @@ version "1.0.0"
 
 shared_scripts {
     "@ox_lib/init.lua",
-    "autodetect.lua"
+    "shared/autodetect.lua"
 }
 
 files {
     "config.lua",
-    "supported.lua",
+    "data/*.lua",
 }
